@@ -1,7 +1,7 @@
 import React from "react";
-import Profile from "../components/userCard";
-import Bulletin from "../components/bulletin";
-import PastEvents from "../components/pastEvents";
+import Profile from "../components/UserCard";
+import Bulletin from "../components/Bulletin";
+import PastEvents from "../components/PastEvents";
 
 function mainProfile() {
   return (
