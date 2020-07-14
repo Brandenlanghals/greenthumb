@@ -1,15 +1,14 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SignIn from './components/pages/signIn';
-import SignUp from './components/pages/signUp';
-import Profile from './components/pages/profile';
-import './App.css';
+import SignIn from "./pages/signIn";
+import SignUp from "./pages/signUp";
+import MainProfile from "./pages/mainProfile";
+import "./App.css";
 
 function App() {
   return (
     <Router>
       <div>
-        <Nav />
         <Switch>
           <Route exact path={["/", "/signIn"]}>
             <SignIn />
@@ -18,10 +17,7 @@ function App() {
             <SignUp />
           </Route>
           <Route exact path="/profile">
-            <Profile />
-          </Route>
-          <Route>
-            <NoMatch />
+            <MainProfile />
           </Route>
         </Switch>
       </div>
