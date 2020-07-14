@@ -2,14 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignIn from './components/pages/signIn';
 import SignUp from './components/pages/signUp';
-import Profile from './components/pages/profile';
+import Profile from './components/pages/profile/profile';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div>
-        <Nav />
         <Switch>
           <Route exact path={["/", "/signIn"]}>
             <SignIn />
@@ -17,11 +16,8 @@ function App() {
           <Route exact path="/signUp">
             <SignUp />
           </Route>
-          <Route exact path="/profile">
+          <Route exact path="/profile/profile">
             <Profile />
-          </Route>
-          <Route>
-            <NoMatch />
           </Route>
         </Switch>
       </div>
