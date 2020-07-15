@@ -1,7 +1,7 @@
 import React from "react";
 
-function PastEvents() {
+function PastBulletin() {
   return <p>Hello from Past Events</p>;
 }
 
-export default PastEvents;
+export default PastBulletin;

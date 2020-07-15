@@ -1,14 +1,16 @@
 import React from "react";
-import Profile from "../components/UserCard";
-import Bulletin from "../components/Bulletin";
-import PastEvents from "../components/PastEvents";
+import Profile from "../components/ProfileUserCard";
+import Bulletin from "../components/ProfileCreateBulletin";
+import CurrentBulletin from "../components/ProfileCurrentBulletin";
+import PastBulletin from "../components/ProfilePastBulletin";
 
 function mainProfile() {
   return (
     <div>
       <Profile />
       <Bulletin />
-      <PastEvents />
+      <CurrentBulletin />
+      <PastBulletin />
     </div>
   );
 }
