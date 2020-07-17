@@ -5,6 +5,7 @@ import Bulletin from "../components/ProfileCreateBulletin";
 import CurrentBulletin from "../components/ProfileCurrentBulletin";
 import PastBulletin from "../components/ProfilePastBulletin";
 
+
 function mainProfile() {
   return (
     <Grid container spacing={3}>
