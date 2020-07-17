@@ -55,7 +55,7 @@ export default function SignUp() {
   const [lastname, setLastname] = useState();
   const [city, setCity] = useState();
   const [state, setState] = useState();
-  const [image, setImage] = useState();
+  // const [image, setImage] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,7 +68,7 @@ export default function SignUp() {
       lastname: lastname,
       city: city,
       state: state,
-      image: image,
+      // image: image,
     }); //.then
   };
   return (
@@ -81,7 +81,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleSubmit} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -160,6 +160,7 @@ export default function SignUp() {
               />
             </Grid>
           </Grid>
+          <Link href="/profile" variant="body2">
           <Button
             type="submit"
             fullWidth
@@ -169,6 +170,7 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
+          </Link>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/signin" variant="body2">
