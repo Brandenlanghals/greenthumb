@@ -27,11 +27,3 @@ app.put("/api/user/:id/edit", ({ body, params }, res) => {
 });
 
 module.exports = router;
-
-
-
-
-
-
-
-module.exports = router;

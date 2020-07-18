@@ -7,20 +7,28 @@ import PastBulletin from "../components/ProfilePastBulletin";
 
 
 function mainProfile() {
+  var style = {
+    backgroundColor: "#2283D3",
+    height: 1000,
+    postion:"center"
+  };
   return (
-    <Grid container spacing={3}>
+    <div style={style}>
+       <Grid container spacing={4}>
       <Grid item xs>
         <Profile />
       </Grid>
       <Grid item xs>
         <Bulletin />
+        <div>
         <CurrentBulletin />
+        </div>
       </Grid>
-      <Grid item xs>
-        <PastBulletin />
+      <Grid item xs >
+        <PastBulletin  />
       </Grid>
     </Grid>
+    </div>
   );
 }
-
 export default mainProfile;
