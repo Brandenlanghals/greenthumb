@@ -9,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import Edit from "@material-ui/icons/Edit";
 import { Redirect, Link } from "react-router-dom";
+import Bulletin from "./ProfileCreateBulletin";
+import Modal from '@material-ui/core/Modal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,8 +42,18 @@ export default function RecipeReviewCard() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
+    <div>
     <Card className={classes.root}>
       <CardHeader
         avatar={<Avatar />}
@@ -62,17 +74,24 @@ export default function RecipeReviewCard() {
           consectetur dolor. Fusce sed tristique magna, vel imperdiet risus.
           Curabitur mattis malesuada lectus. Quisque eleifend eros odio, a
           consectetur orci ornare ut. Vestibulum luctus vel libero quis
-          ultrices. In finibus tincidunt volutpat. Curabitur sit amet imperdiet
-          diam, a sagittis massa. Donec sodales at massa a mollis. Proin
-          blandit, massa quis commodo elementum, lacus erat dignissim turpis, at
-          pharetra arcu mi at ligula. Aenean turpis odio, vulputate sit amet
-          ante non, aliquam convallis urna. Pellentesque aliquam augue non velit
-          finibus fringilla. Nunc ultricies varius facilisis. Integer nec turpis
-          et felis cursus malesuada eu cursus ipsum. Quisque dictum justo arcu,
-          non tempor nunc laoreet vitae. Duis lacinia, lacus eget porta
-          tincidunt, neque dolor euismod elit, at egestas eros magna et magna.
+          ultrices. In finibus tincidunt volutpat.
         </Typography>
       </CardContent>
     </Card>
+    <button type="button" onClick={handleOpen}>
+    Create Event
+  </button>
+  <Modal
+    open={open}
+    onClose={handleClose}
+    aria-labelledby="simple-modal-title"
+    aria-describedby="simple-modal-description"
+  >
+    <Bulletin >
+
+    </Bulletin>
+
+  </Modal>
+  </div>
   );
 }

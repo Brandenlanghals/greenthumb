@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const Profile = require("../../models/user")
+const db = require("../../models")
 
 // Get request to receive data from DB and put on Profile page
-app.get("/api/user/:id", function (req, res) {
-    Profile.find()
+router.get("/user/:id", function (req, res) {
+    db.User.find()
         .then(data => {
             res.json(data)
         })
@@ -13,11 +13,9 @@ app.get("/api/user/:id", function (req, res) {
 });
 
 // Put request for edit profile feature
-app.put("/api/user/:id/edit", ({ body, params }, res) => {
-    Profile.findByIdAndUpdate(
+router.put("/user/:id/edit", ({ body, params }, res) => {
+    db.User.findByIdAndUpdate(
         params.id,
-        { $push: { exercises: body } },
-        { new: true, runValidators: true }
     )
         .then(data => res.json(data))
         .catch(err => {

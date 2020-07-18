@@ -8,5 +8,10 @@ export default{
 
     signUp: function(userData) {
         return axios.post('/api/user/signUp', userData)
+    },
+
+    createEvent: function(eventData) {
+        return axios.post('/api/event', eventData)
     }
+
 }

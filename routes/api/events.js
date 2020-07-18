@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const Events = require("../../models/user")
+const db = require("../../models")
 
-// Get request to receive data from DB and put on Profile page
-app.get("/api/user/:id", function (req, res) {
-    Events.find()
+// Get request to receive event data from DB and put on Profile page
+router.get("/event/:id", function (req, res) {
+    db.Event.find()
         .then(data => {
             res.json(data)
         })
@@ -12,12 +12,10 @@ app.get("/api/user/:id", function (req, res) {
         })
 });
 
-// Put request for edit profile feature
-app.put("/api/user/:id/edit", ({ body, params }, res) => {
-    Events.findByIdAndUpdate(
+// Put request for edit bulletin feature
+router.put("/event/:id/edit", ({ body, params }, res) => {
+    db.Event.findByIdAndUpdate(
         params.id,
-        { $push: { exercises: body } },
-        { new: true, runValidators: true }
     )
         .then(data => res.json(data))
         .catch(err => {
@@ -25,5 +23,16 @@ app.put("/api/user/:id/edit", ({ body, params }, res) => {
             res.json(err)
         })
 });
+
+router.post('/event',function(req, res){
+    db.Event.create(req.body).then(function (dbEvent) {
+        req.logIn(dbEvent, function(err) {
+            if(err) console.log(err)
+        })
+        res.json(dbEvent)
+    })
+    
+})
+
 
 module.exports = router;

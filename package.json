@@ -30,6 +30,7 @@
     "mongoose": "^5.9.24",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "prop-types": "^15.7.2",
     "react-date-picker": "^8.0.1"
   }
 }

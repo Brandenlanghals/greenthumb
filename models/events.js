@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const EventSchema = new Schema ({
+    eventName: {
+        type: String
+    },
     address: {
         type: String
     },
@@ -14,10 +17,10 @@ const EventSchema = new Schema ({
     endTime: {
         type: String
     },
-    cityApproval: {
-        type: Boolean,
-        default: false
-    },
+    // cityApproval: {
+    //     type: Boolean,
+    //     default: false
+    // },
 });
-const User = mongoose.model ('Event', EventSchema);
+const Event = mongoose.model ('Event', EventSchema);
 module.exports = Event;
