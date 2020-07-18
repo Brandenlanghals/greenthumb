@@ -37,15 +37,15 @@ var headerStyle={
       <div style={style}
     >
       <h1 style={headerStyle}>Create Event</h1>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm">
             <FormControl>
               <InputLabel htmlFor="my-input">Address</InputLabel>
               <Input id="my-input" aria-describedby="my-helper-text" />
             </FormControl>
           </div>
-          <div class="col-sm">
+          <div className="col-sm">
             <FormControl>
               <InputLabel htmlFor="my-input"> Start Time</InputLabel>
               <Input id="my-input" aria-describedby="my-helper-text" />
@@ -55,9 +55,9 @@ var headerStyle={
             <InputLabel htmlFor="my-input">End Time</InputLabel>
             <Input id="my-input" aria-describedby="my-helper-text" />
           </FormControl>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
               <div>
               <div
               style={input}>
@@ -69,7 +69,7 @@ var headerStyle={
       </div>
       </div>
               </div>
-              <div class="col-sm">
+              <div className="col-sm">
                 <Checkbox
                   value="false"
                   inputProps={{ "aria-label": "Checkbox A" }}
@@ -82,7 +82,7 @@ var headerStyle={
                   <InputLabel htmlFor="my-input">City Approval</InputLabel>
                 </FormControl>
               </div>
-              <div style={align} class="col-sm">
+              <div style={align} className="col-sm">
                 <Button style={buttonStyle} type="submit">Submit</Button>
               </div>
             </div>
