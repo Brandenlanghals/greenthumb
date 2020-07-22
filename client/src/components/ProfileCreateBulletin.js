@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Calendar from "react-calendar";
 import Api from "../utils/api";
+import EventCalendar from "./EventCalendar"
 import {
   FormControl,
   InputLabel,
@@ -75,24 +75,6 @@ function Bulletin() {
                 />
               </FormControl>
             </div>
-            <div className="col-sm">
-              <FormControl>
-                <InputLabel htmlFor="my-input"> Start Time</InputLabel>
-                <Input
-                  id="my-input"
-                  aria-describedby="my-helper-text"
-                  onChange={(e) => setStartTime(e.target.value)}
-                />
-              </FormControl>
-            </div>
-            <FormControl>
-              <InputLabel htmlFor="my-input">End Time</InputLabel>
-              <Input
-                id="my-input"
-                aria-describedby="my-helper-text"
-                onChange={(e) => setEndTime(e.target.value)}
-              />
-            </FormControl>
             <div className="container">
               <div className="row">
                 <div className="col-sm">
@@ -107,13 +89,7 @@ function Bulletin() {
                     </FormControl>
                   </div>
                   <div>
-                    <Calendar
-                      value={startDate}
-                      onChange={(date) => {
-                        setStartDate(date);
-                        console.log(date);
-                      }}
-                    />
+                  <EventCalendar/>
                   </div>
                 </div>
                 {/* <div className="col-sm">

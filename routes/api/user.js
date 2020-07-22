@@ -16,6 +16,12 @@ router.post('/user/signUp',function(req, res){
     
 })
 
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/signin');
+  });
+
+
 
 
 

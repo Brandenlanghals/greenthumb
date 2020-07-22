@@ -19,8 +19,8 @@ function App() {
             <SignUp />
           </Route>
           {/* add the id after profile */}
-          <Route exact path="/profile">
-            <MainProfile />
+          <Route exact path="/profile/:id">
+          <MainProfile />
           </Route>
           <Route exact path="/profile/edit">
             <EditProfile />

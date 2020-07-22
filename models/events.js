@@ -4,7 +4,7 @@ const EventSchema = new Schema ({
     eventName: {
         type: String
     },
-    address: {
+    location: {
         type: String
     },
     date: {
@@ -17,6 +17,9 @@ const EventSchema = new Schema ({
     endTime: {
         type: String
     },
+    eventDetails: {
+        type: String
+    }
     // cityApproval: {
     //     type: Boolean,
     //     default: false

@@ -13,7 +13,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import api from "../utils/api";
-import SignUp from "./signUp";
 
 function Copyright() {
   return (
@@ -73,7 +72,9 @@ export default function SignInSide() {
     api.logIn({
       email: email,
       password: password,
-    }); //.then
+    }) .then(
+      window.location.href="/profile/:id"
+    )
   };
 
   return (
@@ -118,12 +119,14 @@ export default function SignInSide() {
               label="Remember me"
             />
             
-            <Button href="/profile"
+            <Button
+              id="signInButton"
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
+              onSubmit={handleSubmit}
             >
               Sign In
             </Button>
