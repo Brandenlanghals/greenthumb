@@ -5,6 +5,7 @@ import SignUp from "./pages/signUp";
 import MainProfile from "./pages/mainProfile";
 import About from "./pages/about";
 import EditProfile from "./pages/editProfile";
+import FirstPage from "./pages/firstPage"
 import "./App.css";
 
 function App() {
@@ -12,7 +13,10 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path={["/", "/signIn"]}>
+          <Route exact path={["/", "/firstPage"]}>
+            <FirstPage />
+          </Route>
+          <Route exact path="/signIn">
             <SignIn />
           </Route>
           <Route exact path="/signUp">
