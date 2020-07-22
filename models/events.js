@@ -14,16 +14,9 @@ const EventSchema = new Schema ({
     startTime: {
         type: String
     },
-    endTime: {
-        type: String
-    },
     eventDetails: {
         type: String
     }
-    // cityApproval: {
-    //     type: Boolean,
-    //     default: false
-    // },
 });
 const Event = mongoose.model ('Event', EventSchema);
 module.exports = Event;
