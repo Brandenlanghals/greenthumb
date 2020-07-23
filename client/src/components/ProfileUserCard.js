@@ -10,7 +10,7 @@ import { red } from "@material-ui/core/colors";
 import Edit from "@material-ui/icons/Edit";
 import { Redirect, Link } from "react-router-dom";
 import Bulletin from "./ProfileCreateBulletin";
-import Modal from '@material-ui/core/Modal';
+import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,46 +52,55 @@ export default function RecipeReviewCard() {
     setOpen(false);
   };
 
+  let name = [{ firstName }, { lastName }];
+
+  let avatarCreator = name.map(function () {
+    for (i = 0; i <= name.length - 1; i++) {
+      return name[i].charAt(i);
+    }
+  });
+
+  console.log(avatarCreator.join(""));
+
   return (
     <div>
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={<Avatar />}
-        action={
-          <Link to={"/profile/edit/"}>
-            <IconButton aria-label="Edit" color="primary">
-              <Edit />
-            </IconButton>
-          </Link>
-        }
-        title="Your Name Here"
-        subheader="Location"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Curabitur nec nunc consectetur, scelerisque nulla imperdiet,
-          consectetur dolor. Fusce sed tristique magna, vel imperdiet risus.
-          Curabitur mattis malesuada lectus. Quisque eleifend eros odio, a
-          consectetur orci ornare ut. Vestibulum luctus vel libero quis
-          ultrices. In finibus tincidunt volutpat.
-        </Typography>
-      </CardContent>
-    </Card>
-    <button type="button" onClick={handleOpen}>
-    Create Event
-  </button>
-  <Modal
-    open={open}
-    onClose={handleClose}
-    aria-labelledby="simple-modal-title"
-    aria-describedby="simple-modal-description"
-  >
-    <Bulletin >
-
-    </Bulletin>
-
-  </Modal>
-  </div>
+      <Card className={classes.root}>
+        <CardHeader
+          avatar={
+            <Avatar className={classes.purple}>avatarCreator.join("")</Avatar>
+          }
+          action={
+            <Link to={"/profile/edit/"}>
+              <IconButton aria-label="Edit" color="primary">
+                <Edit />
+              </IconButton>
+            </Link>
+          }
+          title="{firstName} + " " + {lastName}";
+          subheader="Location"
+        />
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Description: Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Curabitur nec nunc consectetur, scelerisque nulla imperdiet,
+            consectetur dolor. Fusce sed tristique magna, vel imperdiet risus.
+            Curabitur mattis malesuada lectus. Quisque eleifend eros odio, a
+            consectetur orci ornare ut. Vestibulum luctus vel libero quis
+            ultrices. In finibus tincidunt volutpat.
+          </Typography>
+        </CardContent>
+      </Card>
+      <button type="button" onClick={handleOpen}>
+        Create Event
+      </button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <Bulletin></Bulletin>
+      </Modal>
+    </div>
   );
 }
