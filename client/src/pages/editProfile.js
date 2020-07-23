@@ -1,9 +1,10 @@
 import React from "react";
+import ProfileEdit from "../components/ProfileEdit";
 
 function EditProfile() {
   return (
     <div>
-      <h1>Hello world! (from editProfile)</h1>
+      <ProfileEdit />
     </div>
   );
 }
