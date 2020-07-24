@@ -70,7 +70,9 @@ export default function SignUp() {
       city: city,
       state: state,
       // image: image,
-    }); //.then
+    }) .then(
+      window.location.href="/profile/:id"
+    )
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -168,6 +170,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Sign Up
           </Button>

@@ -11,6 +11,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
+// import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import api from "../utils/api";
 
@@ -129,7 +130,7 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onSubmit={handleSubmit}
+              onClick={handleSubmit}
             >
             Sign In
             </Button>
