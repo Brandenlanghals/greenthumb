@@ -37,31 +37,28 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     // backgroundPosition: "center",
     width: '100vw',
-    height: '100vh'
+    height: '100vh',
+    
   },
   paper: {
     marginTop: theme.spacing(0),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    fontFamily: 'Raleway, Arial',
-    align: 'center'
   },
   root: {
     justifyContent: 'center'
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(35),
+    backgroundColor: "white"
   },
   typography: {
     fontFamily: 'Raleway, Arial',
-    align: 'center',
-    color: 'black'
+    alignItems: 'center',
+    color: 'blue',
+    padding: [10]
   },
 }));
 
