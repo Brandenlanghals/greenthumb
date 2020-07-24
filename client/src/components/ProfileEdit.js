@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EditProfile() {
-  const classes = useStyles();
-
   const handleSubmit = (e) => {
     Api.editUser({
       firstName: firstName,
