@@ -1,11 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -25,14 +23,18 @@ function Copyright() {
       </Typography>
     );
   }
-
+//Links for avatars at bottom of page
 const faces = [
   "http://i.pravatar.cc/300?img=1",
   "http://i.pravatar.cc/300?img=2",
   "http://i.pravatar.cc/300?img=3",
   "http://i.pravatar.cc/300?img=4"
 ];
+
+//Background color
 document.body.style = 'background: #A9CEE3';
+
+//All style props
 const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: 800,
@@ -75,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }
 }));
-
+//This is the card/page contents
 function FirstPage() {
   const classes = useStyles();
   return (

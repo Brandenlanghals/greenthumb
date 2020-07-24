@@ -26,6 +26,8 @@ function Copyright() {
   );
 }
 
+document.body.style = 'background: #A9CEE3';
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
