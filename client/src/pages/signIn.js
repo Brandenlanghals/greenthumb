@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,6 +13,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import api from "../utils/api";
+import axios from "axios";
 
 function Copyright() {
   return (
@@ -69,12 +70,12 @@ export default function SignInSide() {
     e.preventDefault();
     console.log("email is " + email);
     console.log("password is " + password);
-    api.logIn({
-      email: email,
-      password: password,
-    }) .then(
-      window.location.href="/profile/:id"
-    )
+    api
+      .logIn({
+        email: email,
+        password: password,
+      })
+      .then((window.location.href = "/user/profile"));
   };
 
   return (
@@ -118,7 +119,7 @@ export default function SignInSide() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            
+
             <Button
               id="signInButton"
               type="submit"
@@ -130,7 +131,7 @@ export default function SignInSide() {
             >
               Sign In
             </Button>
-          
+
             <Grid container>
               {/* <Grid item xs>
                 <Link href="#" variant="body2">

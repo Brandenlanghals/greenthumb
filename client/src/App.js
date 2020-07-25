@@ -5,7 +5,7 @@ import SignUp from "./pages/signUp";
 import MainProfile from "./pages/mainProfile";
 import About from "./pages/about";
 import EditProfile from "./pages/editProfile";
-import FirstPage from "./pages/firstPage"
+import FirstPage from "./pages/firstPage";
 import "./App.css";
 
 function App() {
@@ -23,10 +23,10 @@ function App() {
             <SignUp />
           </Route>
           {/* add the id after profile */}
-          <Route exact path="/profile/:id">
-          <MainProfile />
+          <Route exact path="/user/profile">
+            <MainProfile />
           </Route>
-          <Route exact path="/profile/edit">
+          <Route exact path="/user/profile/edit">
             <EditProfile />
           </Route>
           <Route exact path="/about">

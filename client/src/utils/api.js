@@ -14,10 +14,14 @@ export default {
   },
 
   getUser: function () {
-    return axios.get("/api/user");
+    return axios.get("/api/user/profile");
   },
 
   editUser: function (editUser) {
-    return axios.put("/api/user/:id/edit", editUser);
+    return axios.put("/api/user/profile/edit", editUser);
+  },
+
+  test: function () {
+    return axios.get("/api/test");
   },
 };
