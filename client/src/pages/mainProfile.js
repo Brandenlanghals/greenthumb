@@ -6,7 +6,7 @@ import CurrentBulletin from "../components/ProfileCurrentBulletin";
 import PastBulletin from "../components/ProfilePastBulletin";
 import api from "../utils/api";
 
-function MainProfile({ match }) {
+function MainProfile() {
   var style = {
     backgroundColor: "#2283D3",
     height: 1000,

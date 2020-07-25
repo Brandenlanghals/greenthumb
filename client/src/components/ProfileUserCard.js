@@ -76,7 +76,7 @@
 //               </IconButton>
 //             </Link>
 //           }
-//           title="{firstName} + " " + {lastName}";
+//           title={firstName.lastName}
 //           subheader="Location"
 //         />
 //         <CardContent>

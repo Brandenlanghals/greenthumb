@@ -21,6 +21,11 @@ router.get('/logout', function(req, res){
     res.redirect('/signin');
   });
 
+  router.get('/test', function(req, res){
+    
+    
+  });
+
 
 
 
