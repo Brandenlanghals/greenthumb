@@ -4,11 +4,22 @@ import OutlinedCard from './card';
 function CurrentBulletin() {
  var style ={
     backgroundColor: 'white'
+    
   }
   return (
-  <div style={style}>
+    <div>
+       <div style={style}>
 <OutlinedCard />
   </div>
+  <div style={style}>
+  <OutlinedCard />
+    </div>
+    <div style={style}>
+    <OutlinedCard />
+      </div><div style={style}>
+<OutlinedCard />
+  </div>
+    </div>
   )
 }
 export default CurrentBulletin;

@@ -3,13 +3,13 @@ import Grid from "@material-ui/core/Grid";
 import Profile from "../components/ProfileUserCard";
 import Bulletin from "../components/ProfileCreateBulletin";
 import CurrentBulletin from "../components/ProfileCurrentBulletin";
-import PastBulletin from "../components/ProfilePastBulletin";
+// import PastBulletin from "../components/ProfilePastBulletin";
 import axios from "axios";
 import api from "../utils/api";
 
 function MainProfile() {
   var style = {
-    backgroundColor: "#2283D3",
+    backgroundColor: "#A9CEE3",
     height: 1000,
     postion: "center",
   };
@@ -47,7 +47,7 @@ function MainProfile() {
           </div>
         </Grid>
         <Grid item xs>
-          <PastBulletin />
+          {/* <PastBulletin /> */}
         </Grid>
       </Grid>
     </div>
