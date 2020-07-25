@@ -11,15 +11,18 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
+// import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import api from "../utils/api";
 import axios from "axios";
+
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="../pages/firstPage.js">
         Green Thumb
       </Link>{" "}
       {new Date().getFullYear()}
@@ -55,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+    
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -88,7 +92,7 @@ export default function SignInSide() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+          Welcome back! Please Sign in
           </Typography>
           <form onSubmit={handleSubmit} className={classes.form} noValidate>
             <TextField
@@ -127,9 +131,9 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onSubmit={handleSubmit}
+              onClick={handleSubmit}
             >
-              Sign In
+            Sign In
             </Button>
 
             <Grid container>

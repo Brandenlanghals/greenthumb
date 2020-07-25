@@ -26,6 +26,8 @@ function Copyright() {
   );
 }
 
+document.body.style = 'background: #A9CEE3';
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -68,7 +70,9 @@ export default function SignUp() {
       city: city,
       state: state,
       // image: image,
-    }); //.then
+    }) .then(
+      window.location.href="/profile/:id"
+    )
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -166,6 +170,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Sign Up
           </Button>

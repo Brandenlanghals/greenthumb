@@ -1,91 +1,126 @@
-import React from 'react';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Avatar from "@material-ui/core/Avatar";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import { CardActions } from '@material-ui/core';
-import { Paper } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
+import "../styles.css";
 
 function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="">
-        Green Thumb
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+    return (
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="">
+          Green Thumb
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
+//Links for avatars at bottom of page
+const faces = [
+  "http://i.pravatar.cc/300?img=1",
+  "http://i.pravatar.cc/300?img=2",
+  "http://i.pravatar.cc/300?img=3",
+  "http://i.pravatar.cc/300?img=4"
+];
 
+//Background color
+document.body.style = 'background: #A9CEE3';
 
+//All style props
 const useStyles = makeStyles((theme) => ({
-  image: {
-    backgroundImage: "url(https://i.ibb.co/2hnf6xz/cuyahogariverlogo.jpg)",
-    backgroundRepeat: "no-repeat",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
-    backgroundSize: "cover",
-    // backgroundPosition: "center",
-    width: '100vw',
-    height: '100vh',
+  card: {
+    maxWidth: 800,
+    margin: "auto",
+    transition: "0.3s",
+    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
+    "&:hover": {
+      boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(9)
+    }
+  },
+  media: {
+    paddingTop: "75%"
+  },
+  content: {
+    textAlign: "center",
     
   },
-  paper: {
-    marginTop: theme.spacing(0),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+  button: {
+    backgroundColor: "#A9CEE3"
+    
   },
-  root: {
-    justifyContent: 'center'
+  heading: {
+    fontWeight: "bold"
   },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(35),
-    backgroundColor: "white"
+  subheading: {
+    lineHeight: 1.8
   },
   typography: {
-    fontFamily: 'Raleway, Arial',
-    alignItems: 'center',
-    color: 'blue',
-    padding: [10]
+        fontFamily: 'Raleway, Arial',
+        color: 'black',
+        padding: [10]
   },
-}));
-
-export default function SignIn() {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.image}>
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-      <form className={classes.form}>
-        <Typography className={classes.typography} variant="h5" color="textSecondary" component="p">
-            Green Thumb is a place for people to connect and make the world a better place. You can create events in your community, connect with people, & beautify your city. Sign up today and make your community a better place to be.
-        </Typography>
-        <CardActions classes={{root: classes.root}}>
-        <Button color="blue" href="/signin" variant="contained" >Sign In</Button>
-        <Box mt={2}></Box>
-        <Button href="/signup" variant="contained">Create An Account</Button>
-        </CardActions>
-        </form>
-      </div>
+  avatar: {
+    display: "inline-block",
+    border: "2px solid white",
+    "&:not(:first-of-type)": {
       
-      <Box mt={8}>
+    }
+  }
+}));
+//This is the card/page contents
+function FirstPage() {
+  const classes = useStyles();
+  return (
+    <div className="FirstPage">
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image={
+            "https://i.ibb.co/2hnf6xz/cuyahogariverlogo.jpg"
+          }
+        />
+        <CardContent className={classes.content}>
+          <Typography variant="h5"
+            gutterBottom
+          >
+            Green Thumb - Small Actions equal BIG Thumbprints.
+          </Typography>
+          <Typography className={classes.typography}
+            variant="body1"
+          >
+            Green Thumb is where people connect to make the world a better place. Create or join events, and beautify your community 
+            by organizing clean-ups, planting trees, flowers, or simply gathering for a good cause. 
+            To get started today sign-in or create an account below.
+          </Typography>
+          <Box mt={2}></Box>
+          <Grid item xs={12}>
+          <Button className={classes.button} href="/signin" variant="contained" >Sign In</Button>
+          </Grid>
+          <Box mt={2}></Box>
+          <Grid item xs={12}>
+          <Button className={classes.button} href="/signup" variant="contained">Create An Account</Button>
+          </Grid>
+          <Box mt={2}></Box>
+          {faces.map(face => (
+            <Avatar className={classes.avatar} key={face} src={face} />
+          ))}
+        </CardContent>
+        <Box mt={1}>
         <Copyright />
-      </Box>
-    </Container>
+        </Box>
+      </Card>
     </div>
   );
 }
+
+export default FirstPage;
