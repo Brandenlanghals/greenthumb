@@ -1,20 +1,22 @@
 import 'date-fns';
-import React from 'react';
+import React, { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
+import api from "../utils/api";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-export default function EventCalendar() {
-  // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+function EventCalendar() {
+  const [startDate, setStartDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [startTime, setStartTime] =useState();
+  const handleSubmit = (e) => {
+    api.createEvent({
+      startDate: startDate,
+      startTime: startTime,
+  });
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -24,8 +26,8 @@ export default function EventCalendar() {
           id="date-picker-dialog"
           label="Date picker dialog"
           format="MM/dd/yyyy"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={setStartDate}
+          onChange={handleSubmit}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
@@ -34,8 +36,8 @@ export default function EventCalendar() {
           margin="normal"
           id="time-picker"
           label="Time picker"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={setStartTime}
+          onChange={handleSubmit}
           KeyboardButtonProps={{
             'aria-label': 'change time',
           }}
@@ -43,4 +45,7 @@ export default function EventCalendar() {
       </Grid>
     </MuiPickersUtilsProvider>
   );
+  }
 }
+
+export default EventCalendar;

@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
 export default function RecipeReviewCard() {
@@ -51,6 +54,8 @@ export default function RecipeReviewCard() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  
 
   //   let name = [{ firstName }, { lastName }];
 
@@ -90,7 +95,14 @@ export default function RecipeReviewCard() {
           </Typography>
         </CardContent>
       </Card>
-      <button type="button" onClick={handleOpen}>
+      <button 
+      type="submit" onClick={handleOpen}
+      fullWidth
+      variant="contained"
+      color="primary"
+      clsssName={classes.submit}
+      
+      >
         Create Event
       </button>
       <Modal

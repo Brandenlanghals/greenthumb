@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Api from "../utils/api";
+import api from "../utils/api";
 import EventCalendar from "./EventCalendar"
 import {
   FormControl,
@@ -9,39 +9,38 @@ import {
   TextField,
 } from "@material-ui/core";
 
-function Bulletin() {
-  var style = {
-    backgroundColor: "white",
-    borderStyle: "solid",
-    padding: 20,
-    paddingTop: 10,
-    paddingBottom: 10,
-  };
-  var buttonStyle = {
-    backgroundColor: "blue",
-    align: "right",
-  };
-  var headerStyle = {
-    textAlign: "center",
-  };
-  var align = {
-    position: "right",
-  };
-  // var input = {
-  //   padding: 10,
-  //   paddingLeft: 0.5,
-  // };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    Api.createEvent({
-      EventName: EventName,
-      Address: Address,
-      EventDetails: EventDetails,
-    });
-  };
+var style = {
+  backgroundColor: "white",
+  borderStyle: "solid",
+  padding: 20,
+  paddingTop: 10,
+  paddingBottom: 10,
+};
+var buttonStyle = {
+  backgroundColor: "#A9CEE3",
+  align: "right",
+};
+var headerStyle = {
+  textAlign: "center",
+};
+var align = {
+  position: "right",
+};
+
+export default function Bulletin() {
   const [EventName, setEventName] = useState();
   const [Address, setAddress] = useState();
   const [EventDetails, setEventDetails] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    api.createEvent({
+      EventName: EventName,
+      Address: Address,
+      EventDetails: EventDetails,
+      Date: Date
+    });
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div style={style}>
@@ -80,12 +79,12 @@ function Bulletin() {
                       />
                     </FormControl>
                   </div>
-                  <div>
-                  <EventCalendar/>
-                  </div>
+                </div>
+                <div>
+                  <EventCalendar></EventCalendar>
                 </div>
                 <div style={align} className="col-sm">
-                  <Button style={buttonStyle} type="submit">
+                  <Button onClick={handleSubmit} style={buttonStyle} type="submit">
                     Submit
                   </Button>
                 </div>
@@ -97,4 +96,4 @@ function Bulletin() {
     </form>
   );
 }
-export default Bulletin;
+
