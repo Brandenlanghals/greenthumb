@@ -81,7 +81,8 @@ export default function Bulletin() {
                   </div>
                 </div>
                 <div>
-                  <EventCalendar></EventCalendar>
+                  {/* this piece is not working correctly with error msg in inspect */}
+                  <EventCalendar childRef={ref => (this.child = ref)}/>
                 </div>
                 <div style={align} className="col-sm">
                   <Button onClick={handleSubmit} style={buttonStyle} type="submit">
