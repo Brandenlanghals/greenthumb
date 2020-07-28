@@ -2,7 +2,7 @@ const router = require("express").Router();
 const db = require("../../models")
 
 // Get request to receive event data from DB and put on Profile page
-router.get("/event/:id", function (req, res) {
+router.get("/user/profile", function (req, res) {
     db.Event.find()
         .then(data => {
             res.json(data)

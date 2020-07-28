@@ -27,6 +27,7 @@ var align = {
   position: "right",
 };
 
+
 export default function Bulletin() {
   const [EventName, setEventName] = useState();
   const [Address, setAddress] = useState();
@@ -85,7 +86,7 @@ export default function Bulletin() {
                   <EventCalendar childRef={ref => (this.child = ref)}/>
                 </div>
                 <div style={align} className="col-sm">
-                  <Button onClick={handleSubmit} style={buttonStyle} type="submit">
+                  <Button onClick={handleSubmit} style={buttonStyle} variant="contained">
                     Submit
                   </Button>
                 </div>

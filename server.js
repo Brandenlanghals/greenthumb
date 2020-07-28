@@ -10,9 +10,6 @@ const db = require("./models");
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/greenthumb");
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/greenthumb");
-
 //Passport
 var session = require("express-session"),
   bodyParser = require("body-parser"),

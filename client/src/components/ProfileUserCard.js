@@ -35,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: "#A9CEE3",
+    align: "right",
   },
 }));
 
@@ -95,6 +97,7 @@ export default function RecipeReviewCard() {
           </Typography>
         </CardContent>
       </Card>
+      
       <button 
       type="submit" onClick={handleOpen}
       fullWidth
@@ -111,7 +114,7 @@ export default function RecipeReviewCard() {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <Bulletin></Bulletin>
+        <Bulletin/>
       </Modal>
     </div>
   );

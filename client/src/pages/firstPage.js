@@ -34,7 +34,7 @@ const faces = [
 //Background color
 document.body.style = 'background: #A9CEE3';
 
-//All style props
+//All styling
 const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: 800,
