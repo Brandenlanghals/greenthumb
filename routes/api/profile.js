@@ -1,17 +1,21 @@
 const router = require("express").Router();
-const db = require("../../models");
 const User = require("../../models/user")
+
 router.get("user/profile", function (req, res) {
-  if (req.user) {
-    User.findById(req.user)
-    .then((dbModel) => res.json(dbModel))
+  if (req) {
+    User.findById(req.session.passport.user._id)
+    .then((dbModel) => {
+      res.json(dbModel); 
+      console.log("---------")
+    console.log(dbModel)
+    })
   }
 });
 
 router.post("/user", function (req, res) {
   if (req.isAuthenticated()) {
     console.log(req.session.passport.user._id);
-    db.User.findById(req.session.passport.user._id).then((data) => {
+    User.findById(req.session.passport.user._id).then((data) => {
       res.json(data);
     });
   } else {

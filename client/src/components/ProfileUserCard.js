@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -62,14 +62,14 @@ export default function RecipeReviewCard() {
   useEffect(() => {
   Api.getUser().then((data) => {
     console.log(data)
-  }
-  );
+    setFirstName(data.firstName)
+  });
 });
 
 
-  // const [firstName, setFirstName] = useState();
-  // const [lastName, setLastName] = useState();
-  // const [description, setDescription] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [description, setDescription] = useState();
 
 
 
@@ -87,7 +87,7 @@ export default function RecipeReviewCard() {
               </IconButton>
             </Link>
           }
-          title="Your name here" //"{firstName} + " " + {lastName}";
+          title= {firstName}
           subheader="Location"
         />
         <CardContent>

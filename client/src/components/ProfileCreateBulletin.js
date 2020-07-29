@@ -36,10 +36,10 @@ export default function Bulletin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     api.createEvent({
-      EventName: EventName,
-      Address: Address,
-      EventDetails: EventDetails,
-      Date: Date
+      eventName: EventName,
+      location: Address,
+      eventDetails: EventDetails,
+      
     });
   };
   return (
