@@ -11,7 +11,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import api from "../utils/api";
 // import axios from "axios";
@@ -70,6 +70,8 @@ export default function SignInSide() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  let history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("email is " + email);
@@ -79,7 +81,10 @@ export default function SignInSide() {
         email: email,
         password: password,
       })
-      .then((window.location.href = "/user/profile"));
+      .then((res) => {
+        console.log(res.data);
+        history.push("/user/profile");
+      });
   };
 
   return (

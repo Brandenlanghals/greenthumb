@@ -1,8 +1,11 @@
 const router = require("express").Router();
 const db = require("../../models");
-
+const User = require("../../models/user")
 router.get("user/profile", function (req, res) {
-  res.json({});
+  if (req.user) {
+    User.findById(req.user)
+    .then((dbModel) => res.json(dbModel))
+  }
 });
 
 router.post("/user", function (req, res) {

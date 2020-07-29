@@ -1,11 +1,11 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const app = express();
 const passport = require("./config/passport");
 const routes = require("./routes");
-const db = require("./models");
+// const db = require("./models");
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/greenthumb");
@@ -20,7 +20,7 @@ const MongoStore = require("connect-mongo")(session);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 

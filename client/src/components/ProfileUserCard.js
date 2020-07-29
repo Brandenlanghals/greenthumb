@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -11,6 +11,7 @@ import Edit from "@material-ui/icons/Edit";
 import { Redirect, Link } from "react-router-dom";
 import Bulletin from "./ProfileCreateBulletin";
 import Modal from "@material-ui/core/Modal";
+import Api from "../utils/api"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,16 +59,19 @@ export default function RecipeReviewCard() {
   };
 
   
+  useEffect(() => {
+  Api.getUser().then((data) => {
+    console.log(data)
+  }
+  );
+});
 
-  //   let name = [{ firstName }, { lastName }];
 
-  //   let avatarCreator = name.map(function () {
-  //     for (i = 0; i <= name.length - 1; i++) {
-  //       return name[i].charAt(i);
-  //     }
-  //   });
+  // const [firstName, setFirstName] = useState();
+  // const [lastName, setLastName] = useState();
+  // const [description, setDescription] = useState();
 
-  //   console.log(avatarCreator.join(""));
+
 
   return (
     <div>
@@ -114,7 +118,7 @@ export default function RecipeReviewCard() {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <Bulletin/>
+        <Bulletin></Bulletin>
       </Modal>
     </div>
   );
