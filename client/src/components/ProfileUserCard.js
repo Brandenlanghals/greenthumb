@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -11,7 +12,7 @@ import Edit from "@material-ui/icons/Edit";
 import { Redirect, Link } from "react-router-dom";
 import Bulletin from "./ProfileCreateBulletin";
 import Modal from "@material-ui/core/Modal";
-import Api from "../utils/api"
+import Api from "../utils/api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +42,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RecipeReviewCard() {
+//work on this tomorrow
+let name = [{ firstName }, { lastName }];
+
+let avatarCreator = name.map(function () {
+  for (i = 0; i <= name.length - 1; i++) {
+    return name[i].charAt(i);
+  }
+});
+
+console.log(avatarCreator.join(""));
+
+export default function Profile() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -57,28 +69,37 @@ export default function RecipeReviewCard() {
   const handleClose = () => {
     setOpen(false);
   };
+  const location = useLocation();
 
-  
   useEffect(() => {
-  Api.getUser().then((data) => {
-    console.log(data)
-    setFirstName(data.firstName)
-  });
-});
+    console.log(location.pathname);
+    console.log(location.state.userData);
+    setFirstName(location.state.userData.firstname);
+    setLastName(location.state.userData.lastname);
+    setCity(location.state.userData.city);
+    setProvince(location.state.userData.state);
+    setDescription(location.state.userData.description);
+  }, [location]);
 
+  // useEffect(() => {
+  //   Api.getUser().then((data) => {
+  //     console.log(data);
+  //     setFirstName(data.firstName);
+  //   });
+  // });
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [description, setDescription] = useState();
-
-
+  const [city, setCity] = useState();
+  const [province, setProvince] = useState();
 
   return (
     <div>
       <Card className={classes.root}>
         <CardHeader
           avatar={
-            <Avatar className={classes.purple}>avatarCreator.join("")</Avatar>
+            <Avatar className={classes.purple}>{avatarCreator.join("")}</Avatar>
           }
           action={
             <Link to={"/profile/edit"}>
@@ -87,28 +108,23 @@ export default function RecipeReviewCard() {
               </IconButton>
             </Link>
           }
-          title= {firstName}
-          subheader="Location"
+          title={firstName + " " + lastName}
+          subheader={city + ", " + province}
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            Description: Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Curabitur nec nunc consectetur, scelerisque nulla imperdiet,
-            consectetur dolor. Fusce sed tristique magna, vel imperdiet risus.
-            Curabitur mattis malesuada lectus. Quisque eleifend eros odio, a
-            consectetur orci ornare ut. Vestibulum luctus vel libero quis
-            ultrices. In finibus tincidunt volutpat.
+            {description}
           </Typography>
         </CardContent>
       </Card>
-      
-      <button 
-      type="submit" onClick={handleOpen}
-      fullWidth
-      variant="contained"
-      color="primary"
-      clsssName={classes.submit}
-      
+
+      <button
+        type="submit"
+        onClick={handleOpen}
+        fullWidth
+        variant="contained"
+        color="primary"
+        clsssName={classes.submit}
       >
         Create Event
       </button>
