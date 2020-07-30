@@ -1,14 +1,14 @@
 const router = require("express").Router();
-const User = require("../../models/user")
+const User = require("../../models/user");
 
 router.get("user/profile", function (req, res) {
+  console.log("hello");
   if (req) {
-    User.findById(req.session.passport.user._id)
-    .then((dbModel) => {
-      res.json(dbModel); 
-      console.log("---------")
-    console.log(dbModel)
-    })
+    User.findById(req.session.passport.user._id).then((dbModel) => {
+      res.json(dbModel);
+      console.log("---------");
+      console.log(dbModel);
+    });
   }
 });
 
