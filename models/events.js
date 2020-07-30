@@ -4,10 +4,10 @@ const EventSchema = new Schema ({
     eventName: {
         type: String
     },
-    location: {
+    eventLocation: {
         type: String
     },
-    date: {
+    eventDate: {
         type: Date,
         default: Date.now
     },

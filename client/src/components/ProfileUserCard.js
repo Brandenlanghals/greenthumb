@@ -43,15 +43,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //work on this tomorrow
-let name = [{ firstName }, { lastName }];
+// let name = [{ firstName }, { lastName }];
 
-let avatarCreator = name.map(function () {
-  for (i = 0; i <= name.length - 1; i++) {
-    return name[i].charAt(i);
-  }
-});
+// let avatarCreator = name.map(function () {
+//   for (i = 0; i <= name.length - 1; i++) {
+//     return name[i].charAt(i);
+//   }
+// });
 
-console.log(avatarCreator.join(""));
+// console.log(avatarCreator.join(""));
 
 export default function Profile() {
   const classes = useStyles();
@@ -81,6 +81,12 @@ export default function Profile() {
     setDescription(location.state.userData.description);
   }, [location]);
 
+  let userData = location.state.userData;
+  console.log(userData)
+  sessionStorage.setItem("userData", JSON.stringify(userData) )
+  
+
+
   // useEffect(() => {
   //   Api.getUser().then((data) => {
   //     console.log(data);
@@ -98,9 +104,9 @@ export default function Profile() {
     <div>
       <Card className={classes.root}>
         <CardHeader
-          avatar={
-            <Avatar className={classes.purple}>{avatarCreator.join("")}</Avatar>
-          }
+          // avatar={
+          //   <Avatar className={classes.purple}>{avatarCreator.join("")}</Avatar>
+          // }
           action={
             <Link to={"/profile/edit"}>
               <IconButton aria-label="Edit" color="primary">
@@ -124,7 +130,7 @@ export default function Profile() {
         fullWidth
         variant="contained"
         color="primary"
-        clsssName={classes.submit}
+        className={classes.submit}
       >
         Create Event
       </button>
