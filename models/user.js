@@ -24,11 +24,11 @@ const UserSchema = new Schema({
     data: Buffer,
     contentType: String,
   },
-  discription: {
+  description: {
     type: String,
+    default: "Add description in the edit page above.",
   },
 });
 const User = mongoose.model("User", UserSchema);
-
 
 module.exports = User;
