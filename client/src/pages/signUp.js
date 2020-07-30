@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import api from "../utils/api";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -26,7 +27,7 @@ function Copyright() {
   );
 }
 
-document.body.style = 'background: #A9CEE3';
+document.body.style = "background: #A9CEE3";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -57,22 +58,26 @@ export default function SignUp() {
   const [city, setCity] = useState();
   const [state, setState] = useState();
   // const [image, setImage] = useState();
+  let history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("email is " + email);
     console.log("password is " + password);
-    api.signUp({
-      email: email,
-      password: password,
-      firstname: firstname,
-      lastname: lastname,
-      city: city,
-      state: state,
-      // image: image,
-    }) .then(
-      window.location.href="/profile/:id"
-    )
+    api
+      .signUp({
+        email: email,
+        password: password,
+        firstname: firstname,
+        lastname: lastname,
+        city: city,
+        state: state,
+        // image: image,
+      })
+      .then((res) => {
+        console.log(res.data);
+        history.push("/user/profile");
+      });
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -164,16 +169,16 @@ export default function SignUp() {
             </Grid>
           </Grid>
           <Link href="/profile" variant="body2">
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={handleSubmit}
-          >
-            Sign Up
-          </Button>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={handleSubmit}
+            >
+              Sign Up
+            </Button>
           </Link>
           <Grid container justify="flex-end">
             <Grid item>
