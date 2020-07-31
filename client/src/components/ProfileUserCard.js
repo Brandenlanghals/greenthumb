@@ -14,6 +14,7 @@ import Bulletin from "./ProfileCreateBulletin";
 import Modal from "@material-ui/core/Modal";
 import Api from "../utils/api";
 import { useHistory } from "react-router-dom";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor: "#A9CEE3",
+    backgroundColor: "#41EF70",
     align: "right",
   },
 }));
@@ -124,16 +125,14 @@ export default function Profile() {
         </CardContent>
       </Card>
 
-      <button
+      <Button
         type="submit"
         onClick={handleOpen}
-        fullWidth
         variant="contained"
-        color="primary"
         className={classes.submit}
       >
         Create Event
-      </button>
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

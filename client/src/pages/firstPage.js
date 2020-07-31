@@ -86,7 +86,7 @@ function FirstPage() {
         <CardMedia
           className={classes.media}
           image={
-            "https://i.ibb.co/2hnf6xz/cuyahogariverlogo.jpg"
+            "https://i.ibb.co/2hnf6xz/cuyahogariverlogocopy.jpg"
           }
         />
         <CardContent className={classes.content}>
