@@ -10,6 +10,10 @@ import Typography from "@material-ui/core/Typography";
 function CurrentBulletin() {
   const [eventState, setEventState] = useState([]);
 
+  function handleSubmit(e) {
+    api.joinEvent(e);
+  }
+
   useEffect(() => {
     const events = [];
     api.getEvent().then((res) => {
@@ -26,10 +30,12 @@ function CurrentBulletin() {
       {eventState.map((eachEvent) => (
         <Card>
           <CardContent>
+            <h1>{eachEvent.eventName}</h1>
+            <p>{eachEvent.eventDetails}</p>
             {eachEvent.eventDate}
-            {eachEvent.eventName}
-            {eachEvent.eventDetails}
+            <p>{eachEvent._id}</p>
           </CardContent>
+          <button onClick={handleSubmit(eachEvent._id)}>Join</button>
         </Card>
       ))}
     </div>
