@@ -79,10 +79,26 @@ export default function SignInSide() {
         password: password,
       })
       .then((res) => {
-        console.log(res.data);
+        sessionStorage.setItem("userData", JSON.stringify(res.data));
+        sessionStorage.setItem(
+          "userFirstName",
+          JSON.stringify(res.data.firstname)
+        );
+        sessionStorage.setItem(
+          "userLastName",
+          JSON.stringify(res.data.lastname)
+        );
+        sessionStorage.setItem("userCity", JSON.stringify(res.data.city));
+        sessionStorage.setItem(
+          "userProvidence",
+          JSON.stringify(res.data.state)
+        );
+        sessionStorage.setItem(
+          "userDescription",
+          JSON.stringify(res.data.description)
+        );
         history.push({
           pathname: "/user/profile",
-          state: { userData: res.data },
         });
       });
   };
