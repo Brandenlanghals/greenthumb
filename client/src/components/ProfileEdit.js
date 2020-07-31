@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -22,6 +25,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EditProfile() {
   const classes = useStyles();
+  const location = useLocation();
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log(location.pathname);
+    console.log(location.state.userData);
+  }, [location]);
+
   const handleSubmit = (e) => {
     Api.editUser({
       firstName: firstName,
