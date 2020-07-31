@@ -80,23 +80,12 @@ export default function SignInSide() {
       })
       .then((res) => {
         sessionStorage.setItem("userData", JSON.stringify(res.data));
-        sessionStorage.setItem(
-          "userFirstName",
-          JSON.stringify(res.data.firstname)
-        );
-        sessionStorage.setItem(
-          "userLastName",
-          JSON.stringify(res.data.lastname)
-        );
-        sessionStorage.setItem("userCity", JSON.stringify(res.data.city));
-        sessionStorage.setItem(
-          "userProvidence",
-          JSON.stringify(res.data.state)
-        );
-        sessionStorage.setItem(
-          "userDescription",
-          JSON.stringify(res.data.description)
-        );
+        sessionStorage.setItem("userFirstName", res.data.firstname);
+        sessionStorage.setItem("userLastName", res.data.lastname);
+        sessionStorage.setItem("userCity", res.data.city);
+        sessionStorage.setItem("userProvidence", res.data.state);
+        sessionStorage.setItem("userDescription", res.data.description);
+
         history.push({
           pathname: "/user/profile",
         });
