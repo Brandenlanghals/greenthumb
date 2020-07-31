@@ -85,6 +85,7 @@ export default function SignInSide() {
         sessionStorage.setItem("userCity", res.data.city);
         sessionStorage.setItem("userProvidence", res.data.state);
         sessionStorage.setItem("userDescription", res.data.description);
+        sessionStorage.setItem("userId", res.data._id);
 
         history.push({
           pathname: "/user/profile",

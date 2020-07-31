@@ -13,8 +13,8 @@ export default {
     return axios.post("/api/event", eventData);
   },
 
-  getUser: function () {
-    return axios.get("/api/user/profile");
+  getUser: function (userInfo) {
+    return axios.get("/api/getUser", userInfo);
   },
 
   editUser: function (editUser) {
@@ -22,5 +22,8 @@ export default {
   },
   getEvent: function () {
     return axios.get("/api/getEvent");
+  },
+  joinEvent: function (event) {
+    return axios.post("/api/joinEvent", event);
   },
 };

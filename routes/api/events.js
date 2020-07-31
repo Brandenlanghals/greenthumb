@@ -8,23 +8,24 @@ router.get("/getEvent", (req, res) => {
   });
 });
 
-// Put request for edit bulletin feature
-router.put("/event/:id/edit", ({ body, params }, res) => {
-  db.Event.findByIdAndUpdate(params.id)
-    .then((data) => res.json(data))
-    .catch((err) => {
-      console.log("err", err);
-      res.json(err);
-    });
-});
+//  Put request for edit bulletin feature
+// router.put("/event/:id/edit", ({ body, params }, res) => {
+//   db.Event.findByIdAndUpdate(params.id)
+//     .then((data) => res.json(data))
+//     .catch((err) => {
+//       console.log("err", err);
+//       res.json(err);
+//     });
+// });
 
 router.post("/event", function (req, res) {
   db.Event.create(req.body).then(function (dbEvent) {
-    req.logIn(dbEvent, function (err) {
-      if (err) console.log(err);
-    });
     res.json(dbEvent);
   });
+});
+
+router.post("/joinEvent", function (req, res) {
+  console.log(req.body);
 });
 
 module.exports = router;

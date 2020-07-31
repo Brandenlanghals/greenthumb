@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Api from "../utils/api";
+import api from "../utils/api";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -25,25 +23,33 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EditProfile() {
   const classes = useStyles();
-  const location = useLocation();
-  const history = useHistory();
 
-  useEffect(() => {
-    console.log(location.pathname);
-    console.log(location.state.userData);
-  }, [location]);
+  let history = useHistory();
 
   const handleSubmit = (e) => {
-    Api.editUser({
-      firstName: firstName,
-      lastName: lastName,
+    api.editUser({
+      firstname: firstName,
+      lastname: lastName,
+      city: city,
+      state: providence,
       description: description,
       password: password,
+      id: id,
+    });
+    history.push({
+      pathname: "/user/profile/",
     });
   };
 
+  useEffect(() => {
+    setId(sessionStorage.getItem("userId"));
+  });
+
+  const [id, setId] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
+  const [city, setCity] = useState();
+  const [providence, setProvidence] = useState();
   const [description, setDescription] = useState();
   const [password, setPassword] = useState();
 
@@ -76,6 +82,24 @@ export default function EditProfile() {
           <TextField
             id="outlined-basic"
             variant="outlined"
+            label="city"
+            className={classes.textField}
+            margin="normal"
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <br />
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            label="state"
+            className={classes.textField}
+            margin="normal"
+            onChange={(e) => setProvidence(e.target.value)}
+          />
+          <br />
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
             label="Short Description"
             className={classes.textField}
             multiline
@@ -98,6 +122,7 @@ export default function EditProfile() {
             color="primary"
             variant="contained"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Submit
           </Button>
