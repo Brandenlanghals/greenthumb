@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 // import EventCalendar from "./EventCalendar"
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
+import Grid from "@material-ui/core/Grid";
+import DateFnsUtils from "@date-io/date-fns";
 import api from "../utils/api";
 import {
   FormControl,
@@ -15,7 +15,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
-} from '@material-ui/pickers';
+} from "@material-ui/pickers";
 
 var style = {
   backgroundColor: "white",
@@ -35,7 +35,6 @@ var align = {
   position: "right",
 };
 
-
 export default function Bulletin() {
   const [eventName, setEventName] = useState();
   const [eventlocation, setEventLocation] = useState();
@@ -43,7 +42,7 @@ export default function Bulletin() {
   const [startTime, setStartTime] = useState();
   const [eventDate, setEventDate] = useState();
 
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [selectedDate, setSelectedDate] = React.useState(new Date(Date()));
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -52,19 +51,20 @@ export default function Bulletin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    api.createEvent({
-      eventName: eventName,
-      eventlocation: eventlocation,
-      eventDetails: eventDetails,
-      startTime: startTime,
-      eventDate: eventDate,
-    })
-    .then((res) => {
-      console.log(res.data);
-      history.push("/user/profile");
-    });
+    api
+      .createEvent({
+        eventName: eventName,
+        eventlocation: eventlocation,
+        eventDetails: eventDetails,
+        startTime: startTime,
+        eventDate: eventDate,
+      })
+      .then((res) => {
+        console.log(res.data);
+        history.push("/user/profile");
+      });
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <div style={style}>
@@ -92,46 +92,51 @@ export default function Bulletin() {
               </FormControl>
             </div>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="space-around">
-        <KeyboardDatePicker
-          margin="normal"
-          id="date-picker-dialog"
-          label="Date picker dialog"
-          format="MM/dd/yyyy"
-          value={selectedDate}
-          // onChange={(e) => setEventDate(e.target.value)}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-        <KeyboardTimePicker
-          margin="normal"
-          id="time-picker"
-          label="Time picker"
-          // onChange={(e) => setStartTime(e.target.value)}
-          KeyboardButtonProps={{
-            'aria-label': 'change time',
-          }}
-        />
-      </Grid>
-    </MuiPickersUtilsProvider>
-            <br>
-            </br>
+              <Grid container justify="space-around">
+                <KeyboardDatePicker
+                  margin="normal"
+                  id="date-picker-dialog"
+                  label="Date picker dialog"
+                  format="MM/dd/yyyy"
+                  value={selectedDate}
+                  // onChange={(e) => setEventDate(e.target.value)}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date",
+                  }}
+                />
+                <KeyboardTimePicker
+                  margin="normal"
+                  id="time-picker"
+                  label="Time picker"
+                  // onChange={(e) => setStartTime(e.target.value)}
+                  KeyboardButtonProps={{
+                    "aria-label": "change time",
+                  }}
+                />
+              </Grid>
+            </MuiPickersUtilsProvider>
+            <br></br>
             <div className="container">
               <div className="row">
                 <div className="col-sm">
                   <div className="col-sm">
                     <FormControl>
-                    <TextField id="outlined-basic" label="Event Details" variant="outlined"
+                      <TextField
+                        id="outlined-basic"
+                        label="Event Details"
+                        variant="outlined"
                         onChange={(e) => setEventDetails(e.target.value)}
                       />
                     </FormControl>
                   </div>
                 </div>
-                <div>
-                </div>
+                <div></div>
                 <div style={align} className="col-sm">
-                  <Button onClick={handleSubmit} style={buttonStyle} variant="contained">
+                  <Button
+                    onClick={handleSubmit}
+                    style={buttonStyle}
+                    variant="contained"
+                  >
                     Submit
                   </Button>
                 </div>
@@ -143,4 +148,3 @@ export default function Bulletin() {
     </form>
   );
 }
-
