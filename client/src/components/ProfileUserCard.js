@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -9,11 +8,12 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import Edit from "@material-ui/icons/Edit";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Bulletin from "./ProfileCreateBulletin";
 import Modal from "@material-ui/core/Modal";
-import Api from "../utils/api";
+import api from "../utils/api";
 import { useHistory } from "react-router-dom";
+import { setISODay } from "date-fns";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,17 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//work on this tomorrow
-// let name = [{ firstName }, { lastName }];
-
-// let avatarCreator = name.map(function () {
-//   for (i = 0; i <= name.length - 1; i++) {
-//     return name[i].charAt(i);
-//   }
-// });
-
-// console.log(avatarCreator.join(""));
-
 export default function Profile() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -61,6 +50,7 @@ export default function Profile() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -72,40 +62,58 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    setFirstName(sessionStorage.getItem("userFirstName"));
-    setLastName(sessionStorage.getItem("userLastName"));
-    setCity(sessionStorage.getItem("userCity"));
-    setProvince(sessionStorage.getItem("userProvidence"));
-    setDescription(sessionStorage.getItem("userDescription"));
+    setId(sessionStorage.getItem("userId"));
+    api.getUser(sessionStorage.getItem("userId")).then((res) => {
+      console.log(res);
+      if (res) {
+        sessionStorage.setItem("userData", JSON.stringify(res.data));
+        sessionStorage.setItem("userFirstName", res.data.firstname);
+        sessionStorage.setItem("userLastName", res.data.lastname);
+        sessionStorage.setItem("userCity", res.data.city);
+        sessionStorage.setItem("userProvidence", res.data.state);
+        sessionStorage.setItem("userDescription", res.data.description);
+        sessionStorage.setItem("userId", res.data._id);
+        setFirstName(
+          sessionStorage.getItem("userFirstName", res.data.firstname)
+        );
+        setLastName(sessionStorage.getItem("userLastName", res.data.lastname));
+        setCity(sessionStorage.getItem("userCity", res.data.city));
+        setProvince(sessionStorage.getItem("userProvidence", res.data.state));
+        setDescription(
+          sessionStorage.getItem("userDescription", res.data.description)
+        );
+      }
+    });
   }, []);
 
-  // useEffect(() => {
-  //   Api.getUser().then((data) => {
-  //     console.log(data);
-  //     setFirstName(data.firstName);
-  //   });
-  // });
-
+  const [id, setId] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [description, setDescription] = useState();
   const [city, setCity] = useState();
   const [province, setProvince] = useState();
+
   let history = useHistory();
+
+  // let firstInital = sessionStorage.getItem("userFirstName");
+  // let secondInitial = sessionStorage.getItem("userLastName");
+  // let name = [firstInital, secondInitial];
+  // let avatarCreator = name.map(function (letter) {
+  //   return letter.charAt(0);
+  // });
 
   return (
     <div>
       <Card className={classes.root}>
         <CardHeader
           // avatar={
-          //   <Avatar className={classes.purple}>{avatarCreator.join("")}</Avatar>
+          //   // <Avatar className={classes.purple}>{avatarCreator.join("")}</Avatar>
           // }
           action={
             <Link
               onClick={(res) => {
                 history.push({
                   pathname: "/user/profile/edit",
-                  state: { userData: res.data },
                 });
               }}
             >
