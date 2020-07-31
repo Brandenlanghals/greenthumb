@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+// import EventCalendar from "./EventCalendar"
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
 import api from "../utils/api";
-import EventCalendar from "./EventCalendar"
 import {
   FormControl,
   InputLabel,
@@ -8,6 +11,11 @@ import {
   Button,
   TextField,
 } from "@material-ui/core";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 var style = {
   backgroundColor: "white",
@@ -29,19 +37,34 @@ var align = {
 
 
 export default function Bulletin() {
-  const [EventName, setEventName] = useState();
-  const [Address, setAddress] = useState();
-  const [EventDetails, setEventDetails] = useState();
+  const [eventName, setEventName] = useState();
+  const [eventlocation, setEventLocation] = useState();
+  const [eventDetails, setEventDetails] = useState();
+  const [startTime, setStartTime] = useState();
+  const [eventDate, setEventDate] = useState();
+
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  let history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     api.createEvent({
-      eventName: EventName,
-      location: Address,
-      eventDetails: EventDetails,
-      
+      eventName: eventName,
+      eventlocation: eventlocation,
+      eventDetails: eventDetails,
+      startTime: startTime,
+      eventDate: eventDate,
+    })
+    .then((res) => {
+      console.log(res.data);
+      history.push("/user/profile");
     });
   };
+  
   return (
     <form onSubmit={handleSubmit}>
       <div style={style}>
@@ -64,10 +87,34 @@ export default function Bulletin() {
                 <Input
                   id="my-input"
                   aria-describedby="my-helper-text"
-                  onChange={(e) => setAddress(e.target.value)}
+                  onChange={(e) => setEventLocation(e.target.value)}
                 />
               </FormControl>
             </div>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Grid container justify="space-around">
+        <KeyboardDatePicker
+          margin="normal"
+          id="date-picker-dialog"
+          label="Date picker dialog"
+          format="MM/dd/yyyy"
+          value={selectedDate}
+          // onChange={(e) => setEventDate(e.target.value)}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+        <KeyboardTimePicker
+          margin="normal"
+          id="time-picker"
+          label="Time picker"
+          // onChange={(e) => setStartTime(e.target.value)}
+          KeyboardButtonProps={{
+            'aria-label': 'change time',
+          }}
+        />
+      </Grid>
+    </MuiPickersUtilsProvider>
             <br>
             </br>
             <div className="container">
@@ -82,9 +129,6 @@ export default function Bulletin() {
                   </div>
                 </div>
                 <div>
-                  {/* this piece is not working correctly with error msg in inspect */}
-                  <EventCalendar/>
-              
                 </div>
                 <div style={align} className="col-sm">
                   <Button onClick={handleSubmit} style={buttonStyle} variant="contained">

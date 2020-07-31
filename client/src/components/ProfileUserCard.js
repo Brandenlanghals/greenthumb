@@ -51,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
 //     return name[i].charAt(i);
 //   }
 // });
-//avatarCreator.join("")
 
 // console.log(avatarCreator.join(""));
 
@@ -83,6 +82,17 @@ export default function Profile() {
     setDescription(location.state.userData.description);
   }, [location]);
 
+  let userData = location.state.userData;
+  console.log(userData);
+  sessionStorage.setItem("userData", JSON.stringify(userData));
+
+  // useEffect(() => {
+  //   Api.getUser().then((data) => {
+  //     console.log(data);
+  //     setFirstName(data.firstName);
+  //   });
+  // });
+
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [description, setDescription] = useState();
@@ -94,7 +104,9 @@ export default function Profile() {
     <div>
       <Card className={classes.root}>
         <CardHeader
-          avatar={<Avatar className={classes.purple}>GT</Avatar>}
+          // avatar={
+          //   <Avatar className={classes.purple}>{avatarCreator.join("")}</Avatar>
+          // }
           action={
             <Link
               onClick={(res) => {
