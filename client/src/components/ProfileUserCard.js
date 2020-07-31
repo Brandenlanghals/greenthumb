@@ -13,6 +13,7 @@ import { Redirect, Link } from "react-router-dom";
 import Bulletin from "./ProfileCreateBulletin";
 import Modal from "@material-ui/core/Modal";
 import Api from "../utils/api";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,15 +44,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //work on this tomorrow
-let name = [{ firstName }, { lastName }];
+// let name = [{ firstName }, { lastName }];
 
-let avatarCreator = name.map(function () {
-  for (i = 0; i <= name.length - 1; i++) {
-    return name[i].charAt(i);
-  }
-});
+// let avatarCreator = name.map(function () {
+//   for (i = 0; i <= name.length - 1; i++) {
+//     return name[i].charAt(i);
+//   }
+// });
+//avatarCreator.join("")
 
-console.log(avatarCreator.join(""));
+// console.log(avatarCreator.join(""));
 
 export default function Profile() {
   const classes = useStyles();
@@ -81,28 +83,27 @@ export default function Profile() {
     setDescription(location.state.userData.description);
   }, [location]);
 
-  // useEffect(() => {
-  //   Api.getUser().then((data) => {
-  //     console.log(data);
-  //     setFirstName(data.firstName);
-  //   });
-  // });
-
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [description, setDescription] = useState();
   const [city, setCity] = useState();
   const [province, setProvince] = useState();
+  let history = useHistory();
 
   return (
     <div>
       <Card className={classes.root}>
         <CardHeader
-          avatar={
-            <Avatar className={classes.purple}>{avatarCreator.join("")}</Avatar>
-          }
+          avatar={<Avatar className={classes.purple}>GT</Avatar>}
           action={
-            <Link to={"/profile/edit"}>
+            <Link
+              onClick={(res) => {
+                history.push({
+                  pathname: "/user/profile/edit",
+                  state: { userData: res.data },
+                });
+              }}
+            >
               <IconButton aria-label="Edit" color="primary">
                 <Edit />
               </IconButton>
@@ -124,7 +125,7 @@ export default function Profile() {
         fullWidth
         variant="contained"
         color="primary"
-        clsssName={classes.submit}
+        className={classes.submit}
       >
         Create Event
       </button>
