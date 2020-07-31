@@ -2,7 +2,9 @@ import React, { useState, useEffect, setState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Profile from "../components/ProfileUserCard";
 import CurrentBulletin from "../components/ProfileCurrentBulletin";
-// import PastBulletin from "../components/ProfilePastBulletin";
+import Navbar from "../components/Navbar";
+import axios from "axios";
+import api from "../utils/api";
 
 function MainProfile() {
   var style = {
@@ -13,6 +15,7 @@ function MainProfile() {
 
   return (
     <div style={style}>
+      <Navbar />
       <Grid container spacing={4}>
         <Grid item xs>
           <Profile />

@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import api from "../utils/api";
+import CardActions from '@material-ui/core/CardActions';
 import {
-  FormControl,
   InputLabel,
   Input,
   Button,
@@ -18,21 +18,22 @@ import {
 } from "@material-ui/pickers";
 
 var style = {
-  backgroundColor: "white",
+  backgroundColor: "#3498DB",
   borderStyle: "solid",
   padding: 20,
   paddingTop: 10,
   paddingBottom: 10,
 };
 var buttonStyle = {
-  backgroundColor: "#A9CEE3",
+  backgroundColor: "#41EF70",
   align: "right",
 };
 var headerStyle = {
   textAlign: "center",
 };
-var align = {
-  position: "right",
+var input = {
+  backgroundColor: "white",
+  
 };
 
 export default function Bulletin() {
@@ -71,32 +72,36 @@ export default function Bulletin() {
         <h1 style={headerStyle}>Create Event</h1>
         <div className="container">
           <div className="row">
+          <CardActions style={{justifyContent: 'center'}}>
             <div className="col-sm">
-              <FormControl>
                 <InputLabel htmlFor="my-input">Event Name</InputLabel>
                 <Input
                   id="my-input"
+                  style={input}
+                  variant="filled"
                   aria-describedby="my-helper-text"
                   onChange={(e) => setEventName(e.target.value)}
                 />
-              </FormControl>
             </div>
+            </CardActions>
+            <CardActions style={{justifyContent: 'center'}}>
             <div className="col-sm">
-              <FormControl>
                 <InputLabel htmlFor="my-input">Location</InputLabel>
                 <Input
                   id="my-input"
+                  style={input}
                   aria-describedby="my-helper-text"
                   onChange={(e) => setEventLocation(e.target.value)}
                 />
-              </FormControl>
             </div>
+            </CardActions>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid container justify="space-around">
+              <CardActions style={{justifyContent: 'center'}}>
                 <KeyboardDatePicker
                   margin="normal"
                   id="date-picker-dialog"
-                  label="Date picker dialog"
+                  label="Event Date"
                   format="MM/dd/yyyy"
                   value={selectedDate}
                   // onChange={(e) => setEventDate(e.target.value)}
@@ -104,15 +109,17 @@ export default function Bulletin() {
                     "aria-label": "change date",
                   }}
                 />
+                <CardActions style={{justifyContent: 'center'}}></CardActions>
                 <KeyboardTimePicker
                   margin="normal"
                   id="time-picker"
-                  label="Time picker"
+                  label="Event Time"
                   // onChange={(e) => setStartTime(e.target.value)}
                   KeyboardButtonProps={{
                     "aria-label": "change time",
                   }}
                 />
+                </CardActions>
               </Grid>
             </MuiPickersUtilsProvider>
             <br></br>
@@ -120,25 +127,30 @@ export default function Bulletin() {
               <div className="row">
                 <div className="col-sm">
                   <div className="col-sm">
-                    <FormControl>
+                    <CardActions style={{justifyContent: 'center'}}>
                       <TextField
-                        id="outlined-basic"
-                        label="Event Details"
-                        variant="outlined"
+                        id="full-width-text-field"
+                        label="Tell us about your event"
+                        width= "auto"
+                        style={input}
+                        variant="filled"
                         onChange={(e) => setEventDetails(e.target.value)}
                       />
-                    </FormControl>
+                      </CardActions>
                   </div>
                 </div>
                 <div></div>
-                <div style={align} className="col-sm">
+                <div className="col-sm">
+                <CardActions style={{justifyContent: 'center'}}>
                   <Button
+                    type="submit"
                     onClick={handleSubmit}
                     style={buttonStyle}
                     variant="contained"
                   >
                     Submit
                   </Button>
+                  </CardActions>
                 </div>
               </div>
             </div>
