@@ -20,8 +20,7 @@ export default {
   editUser: function (editUser) {
     return axios.put("/api/user/profile/edit", editUser);
   },
-
-  test: function () {
-    return axios.get("/api/test");
+  getEvent: function () {
+    return axios.get("/api/getEvent");
   },
 };
