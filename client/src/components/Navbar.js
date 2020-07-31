@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -24,7 +25,7 @@ export default function NavBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar style={{ background: '#EF9C6C' }} position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             Green Thumb

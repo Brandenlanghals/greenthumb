@@ -17,6 +17,7 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 
+//Styling here
 var style = {
   backgroundColor: "#3498DB",
   borderStyle: "solid",

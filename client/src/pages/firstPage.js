@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
@@ -10,6 +10,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import "../styles.css";
+import Background from "../components/Background/Background";
 
 function Copyright() {
     return (
@@ -32,7 +33,7 @@ const faces = [
 ];
 
 //Background color
-document.body.style = 'background: #A9CEE3';
+// document.body.style = 'background: #A9CEE3';
 
 //All styling
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 800,
     margin: "auto",
     transition: "0.3s",
-    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
+    border: "10px",
+    boxShadow: "0 10px 40px -12px rgba(0,0,0,0.3)",
     "&:hover": {
       boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
       marginTop: theme.spacing(2),
@@ -80,8 +82,11 @@ const useStyles = makeStyles((theme) => ({
 //This is the card/page contents
 function FirstPage() {
   const classes = useStyles();
+
+
   return (
     <div className="FirstPage">
+      <Background backgroundImage="https://images.unsplash.com/photo-1489644484856-f3ddc0adc923?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80">
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
@@ -119,6 +124,7 @@ function FirstPage() {
         <Copyright />
         </Box>
       </Card>
+      </Background>
     </div>
   );
 }
