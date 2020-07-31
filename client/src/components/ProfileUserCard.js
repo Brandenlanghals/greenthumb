@@ -70,21 +70,14 @@ export default function Profile() {
   const handleClose = () => {
     setOpen(false);
   };
-  const location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname);
-    console.log(location.state.userData);
-    setFirstName(location.state.userData.firstname);
-    setLastName(location.state.userData.lastname);
-    setCity(location.state.userData.city);
-    setProvince(location.state.userData.state);
-    setDescription(location.state.userData.description);
-  }, [location]);
-
-  let userData = location.state.userData;
-  console.log(userData);
-  sessionStorage.setItem("userData", JSON.stringify(userData));
+    setFirstName(sessionStorage.getItem("userFirstName"));
+    setLastName(sessionStorage.getItem("userLastName"));
+    setCity(sessionStorage.getItem("userCity"));
+    setProvince(sessionStorage.getItem("userProvidence"));
+    setDescription(sessionStorage.getItem("userDescription"));
+  }, []);
 
   // useEffect(() => {
   //   Api.getUser().then((data) => {
