@@ -1,6 +1,5 @@
 {
   "name": "greenthumb",
-  "homepage": "https://gogreenthumb.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
