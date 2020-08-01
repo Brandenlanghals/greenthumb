@@ -26,7 +26,7 @@ function Copyright() {
   );
 }
 
-document.body.style = "background: #A9CEE3";
+document.body.style = "background: #659DBD";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -46,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  input: {
+    backgroundColor: "white",
+  }
+  
 }));
 
 export default function SignUp() {
@@ -81,12 +85,13 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Create a Green Thumb Account
         </Typography>
         <form onSubmit={handleSubmit} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
+                className={classes.input}
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
@@ -100,6 +105,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                className={classes.input}
                 variant="outlined"
                 required
                 fullWidth
@@ -112,6 +118,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                className={classes.input}
                 variant="outlined"
                 required
                 fullWidth
@@ -124,6 +131,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                className={classes.input}
                 variant="outlined"
                 required
                 fullWidth
@@ -137,6 +145,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                className={classes.input}
                 autoComplete="city"
                 name="City"
                 variant="outlined"
@@ -150,6 +159,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                className={classes.input}
                 autoComplete="State"
                 name="State"
                 variant="outlined"
@@ -177,7 +187,7 @@ export default function SignUp() {
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/signin" variant="body2">
-                Already have an account? Sign in
+                Already have a Green Thumb account? Sign in
               </Link>
             </Grid>
           </Grid>

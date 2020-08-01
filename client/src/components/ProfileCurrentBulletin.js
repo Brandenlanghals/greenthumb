@@ -21,6 +21,13 @@ function CurrentBulletin() {
 
   var style = {
     backgroundColor: "#379683",
+    margin: "auto",
+    transition: "0.3s",
+    border: "10px",
+    boxShadow: "0 10px 40px -12px rgba(0,0,0,0.3)",
+    boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
+    marginTop: (2),
+    marginBottom: (9),
   };
   return (
     <div style={style}>
