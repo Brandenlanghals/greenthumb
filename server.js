@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/public"));
+  app.use('/static', express.static(path.join(__dirname, 'client/build')));
 }
 
 //session storage
