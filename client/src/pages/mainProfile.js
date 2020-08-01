@@ -3,8 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Profile from "../components/ProfileUserCard";
 import CurrentBulletin from "../components/ProfileCurrentBulletin";
 import Navbar from "../components/Navbar";
-import axios from "axios";
-import api from "../utils/api";
+import Bulletin from "../components/ProfilePastBulletin"
 import Background from "../components/Background/Background";
 function MainProfile() {
   var style = {

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import api from "../utils/api";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-// import Button from '@material-ui/core/Button';
-import Typography from "@material-ui/core/Typography";
-import { InputLabel, Input, Button, TextField } from "@material-ui/core";
+import { InputLabel } from "@material-ui/core";
 
 function CurrentBulletin() {
   const [eventState, setEventState] = useState([]);
@@ -37,13 +35,13 @@ function CurrentBulletin() {
               <p>{eachEvent.eventDetails}</p>
               <InputLabel htmlFor="my-input">When?</InputLabel>
               {eachEvent.eventDate}
-              <button
+              {/* <button
                 onClick={() => {
                   handleSubmit(eachEvent._id);
                 }}
               >
                 Join
-              </button>
+              </button> */}
               <p>{eachEvent._id}</p>
             </div>
           </CardContent>

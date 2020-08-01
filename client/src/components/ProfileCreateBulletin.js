@@ -6,6 +6,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import api from "../utils/api";
 import CardActions from '@material-ui/core/CardActions';
 import {
+  Link,
   InputLabel,
   Input,
   Button,
@@ -53,10 +54,15 @@ export default function Bulletin() {
     setSelectedTime(date);
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   let history = useHistory();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     api
       .createEvent({
         eventName: eventName,
@@ -68,7 +74,6 @@ export default function Bulletin() {
       })
       .then((res) => {
         console.log(res.data);
-        history.push("/user/profile");
       });
   };
 
@@ -149,14 +154,18 @@ export default function Bulletin() {
                 <div></div>
                 <div className="col-sm">
                 <CardActions style={{justifyContent: 'center'}}>
+                  <Link to={"/user/profile"}>
                   <Button
+                    href="/user/profile"
                     type="submit"
                     onClick={handleSubmit}
                     style={buttonStyle}
                     variant="contained"
+                    onSubmit={handleClose}
                   >
                     Submit
                   </Button>
+                  </Link>
                   </CardActions>
                 </div>
               </div>

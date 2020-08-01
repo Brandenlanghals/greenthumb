@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -29,15 +30,15 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "date-fns": "^2.0.0-beta.5",
+    "dot-prop": ">=5.1.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "moment": "^2.27.0",
-    "mongoose": "^5.9.24",
+    "mongoose": "^5.9.27",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "prop-types": "^15.7.2",
-    "react-date-picker": "^8.0.1",
-    "dot-prop": ">=5.1.1"
+    "react-date-picker": "^8.0.1"
   }
 }
