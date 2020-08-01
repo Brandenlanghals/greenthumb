@@ -1,8 +1,9 @@
 {
   "name": "greenthumb",
+  "homepage": "https://gogreenthumb.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:3001",
   "secure": false,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
