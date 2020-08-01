@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import api from "../utils/api";
 import CardActions from "@material-ui/core/CardActions";
-import { InputLabel, Input, Button, TextField } from "@material-ui/core";
+import { Link, InputLabel, Input, Button, TextField } from "@material-ui/core";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -45,6 +45,12 @@ export default function Bulletin() {
   const [startTime, setSelectedTime] = React.useState(new Date(Date()));
   const handleTimeChange = (date) => {
     setSelectedTime(date);
+  };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   let history = useHistory();
@@ -142,15 +148,18 @@ export default function Bulletin() {
                 <div></div>
                 <div className="col-sm">
                   <CardActions style={{ justifyContent: "center" }}>
-                    <Button
-                      href="/user/profile"
-                      type="submit"
-                      onClick={handleSubmit}
-                      style={buttonStyle}
-                      variant="contained"
-                    >
-                      Submit
-                    </Button>
+                    <Link to={"/user/profile"}>
+                      <Button
+                        href="/user/profile"
+                        type="submit"
+                        onClick={handleSubmit}
+                        style={buttonStyle}
+                        variant="contained"
+                        onSubmit={handleClose}
+                      >
+                        Submit
+                      </Button>
+                    </Link>
                   </CardActions>
                 </div>
               </div>
