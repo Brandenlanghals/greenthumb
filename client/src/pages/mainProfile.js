@@ -3,8 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Profile from "../components/ProfileUserCard";
 import CurrentBulletin from "../components/ProfileCurrentBulletin";
 import Navbar from "../components/Navbar";
-import axios from "axios";
-import api from "../utils/api";
+import Bulletin from "../components/ProfilePastBulletin";
 
 function MainProfile() {
   var style = {
@@ -26,7 +25,7 @@ function MainProfile() {
           </div>
         </Grid>
         <Grid item xs>
-          {/* <PastBulletin /> */}
+          <Bulletin />
         </Grid>
       </Grid>
     </div>
