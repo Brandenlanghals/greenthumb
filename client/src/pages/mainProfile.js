@@ -3,8 +3,9 @@ import Grid from "@material-ui/core/Grid";
 import Profile from "../components/ProfileUserCard";
 import CurrentBulletin from "../components/ProfileCurrentBulletin";
 import Navbar from "../components/Navbar";
-import Bulletin from "../components/ProfilePastBulletin"
+import Bulletin from "../components/ProfilePastBulletin";
 import Background from "../components/Background/Background";
+
 function MainProfile() {
   var style = {
     backgroundColor: "#A9CEE3",

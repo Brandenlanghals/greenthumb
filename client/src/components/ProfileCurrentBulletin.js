@@ -49,7 +49,6 @@ function CurrentBulletin() {
               >
                 Join
               </button> */}
-              <p>{eachEvent._id}</p>
             </div>
           </CardContent>
         </Card>

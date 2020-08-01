@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -6,7 +6,6 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const passport = require("./config/passport");
 const routes = require("./routes");
-
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/greenthumb");
@@ -25,10 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, 'build')));
+  app.use(express.static(path.join(__dirname, "build")));
 }
 
 //session storage
@@ -42,7 +40,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 // Define API routes here
 app.use(routes);

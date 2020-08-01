@@ -4,14 +4,8 @@ import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import api from "../utils/api";
-import CardActions from '@material-ui/core/CardActions';
-import {
-  Link,
-  InputLabel,
-  Input,
-  Button,
-  TextField,
-} from "@material-ui/core";
+import CardActions from "@material-ui/core/CardActions";
+import { Link, InputLabel, Input, Button, TextField } from "@material-ui/core";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -35,7 +29,6 @@ var headerStyle = {
 };
 var input = {
   backgroundColor: "white",
-  
 };
 
 export default function Bulletin() {
@@ -70,7 +63,6 @@ export default function Bulletin() {
         eventDetails: eventDetails,
         startTime: startTime,
         eventDate: eventDate,
-
       })
       .then((res) => {
         console.log(res.data);
@@ -83,8 +75,8 @@ export default function Bulletin() {
         <h1 style={headerStyle}>Create Event</h1>
         <div className="container">
           <div className="row">
-          <CardActions style={{justifyContent: 'center'}}>
-            <div className="col-sm">
+            <CardActions style={{ justifyContent: "center" }}>
+              <div className="col-sm">
                 <InputLabel htmlFor="my-input">Event Name</InputLabel>
                 <Input
                   id="my-input"
@@ -93,10 +85,10 @@ export default function Bulletin() {
                   aria-describedby="my-helper-text"
                   onChange={(e) => setEventName(e.target.value)}
                 />
-            </div>
+              </div>
             </CardActions>
-            <CardActions style={{justifyContent: 'center'}}>
-            <div className="col-sm">
+            <CardActions style={{ justifyContent: "center" }}>
+              <div className="col-sm">
                 <InputLabel htmlFor="my-input">Location</InputLabel>
                 <Input
                   id="my-input"
@@ -104,33 +96,35 @@ export default function Bulletin() {
                   aria-describedby="my-helper-text"
                   onChange={(e) => setEventLocation(e.target.value)}
                 />
-            </div>
+              </div>
             </CardActions>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid container justify="space-around">
-              <CardActions style={{justifyContent: 'center'}}>
-              <KeyboardDatePicker
-                  margin="normal"
-                  id="date-picker-dialog"
-                  label="Date picker dialog"
-                  format="MM/dd/yyyy"
-                  value={eventDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                  }}
-                />
-                <CardActions style={{justifyContent: 'center'}}></CardActions>
-                <KeyboardTimePicker
-                  margin="normal"
-                  id="time-picker"
-                  label="Time picker"
-                  value={startTime}
-                  onChange={handleTimeChange}
-                  KeyboardButtonProps={{
-                    'aria-label': 'change time',
-                  }}
-                />
+                <CardActions style={{ justifyContent: "center" }}>
+                  <KeyboardDatePicker
+                    margin="normal"
+                    id="date-picker-dialog"
+                    label="Date picker dialog"
+                    format="MM/dd/yyyy"
+                    value={eventDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                      "aria-label": "change date",
+                    }}
+                  />
+                  <CardActions
+                    style={{ justifyContent: "center" }}
+                  ></CardActions>
+                  <KeyboardTimePicker
+                    margin="normal"
+                    id="time-picker"
+                    label="Time picker"
+                    value={startTime}
+                    onChange={handleTimeChange}
+                    KeyboardButtonProps={{
+                      "aria-label": "change time",
+                    }}
+                  />
                 </CardActions>
               </Grid>
             </MuiPickersUtilsProvider>
@@ -139,33 +133,33 @@ export default function Bulletin() {
               <div className="row">
                 <div className="col-sm">
                   <div className="col-sm">
-                    <CardActions style={{justifyContent: 'center'}}>
+                    <CardActions style={{ justifyContent: "center" }}>
                       <TextField
                         id="full-width-text-field"
                         label="Tell us about your event"
-                        width= "auto"
+                        width="auto"
                         style={input}
                         variant="filled"
                         onChange={(e) => setEventDetails(e.target.value)}
                       />
-                      </CardActions>
+                    </CardActions>
                   </div>
                 </div>
                 <div></div>
                 <div className="col-sm">
-                <CardActions style={{justifyContent: 'center'}}>
-                  <Link to={"/user/profile"}>
-                  <Button
-                    href="/user/profile"
-                    type="submit"
-                    onClick={handleSubmit}
-                    style={buttonStyle}
-                    variant="contained"
-                    onSubmit={handleClose}
-                  >
-                    Submit
-                  </Button>
-                  </Link>
+                  <CardActions style={{ justifyContent: "center" }}>
+                    <Link to={"/user/profile"}>
+                      <Button
+                        href="/user/profile"
+                        type="submit"
+                        onClick={handleSubmit}
+                        style={buttonStyle}
+                        variant="contained"
+                        onSubmit={handleClose}
+                      >
+                        Submit
+                      </Button>
+                    </Link>
                   </CardActions>
                 </div>
               </div>
