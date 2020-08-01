@@ -8,7 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import Edit from "@material-ui/icons/Edit";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Bulletin from "./ProfileCreateBulletin";
 import Modal from "@material-ui/core/Modal";
 import api from "../utils/api";
@@ -64,7 +64,7 @@ export default function Profile() {
   useEffect(() => {
     setId(sessionStorage.getItem("userId"));
     api.getUser(sessionStorage.getItem("userId")).then((res) => {
-      console.log(res);
+      //console.log(res);
       if (res) {
         sessionStorage.setItem("userData", JSON.stringify(res.data));
         sessionStorage.setItem("userFirstName", res.data.firstname);
@@ -95,28 +95,22 @@ export default function Profile() {
 
   let history = useHistory();
 
-  // let firstInital = sessionStorage.getItem("userFirstName");
-  // let secondInitial = sessionStorage.getItem("userLastName");
-  // let name = [firstInital, secondInitial];
-  // let avatarCreator = name.map(function (letter) {
-  //   return letter.charAt(0);
-  // });
+  let firstInital = sessionStorage.getItem("userFirstName");
+  let secondInitial = sessionStorage.getItem("userLastName");
+  let name = [firstInital, secondInitial];
+  let avatarCreator = name.map(function (letter) {
+    return letter.charAt(0);
+  });
 
   return (
     <div>
       <Card className={classes.root}>
         <CardHeader
-          // avatar={
-          //   // <Avatar className={classes.purple}>{avatarCreator.join("")}</Avatar>
-          // }
+          avatar={
+            <Avatar className={classes.purple}>{avatarCreator.join("")}</Avatar>
+          }
           action={
-            <Link
-              onClick={(res) => {
-                history.push({
-                  pathname: "/user/profile/edit",
-                });
-              }}
-            >
+            <Link to={"/user/profile/edit"}>
               <IconButton aria-label="Edit" color="primary">
                 <Edit />
               </IconButton>

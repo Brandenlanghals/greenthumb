@@ -1,11 +1,11 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-
-
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import api from "../utils/api";
+import { Redirect, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
+function handleLogOut() {
+  api.logOut();
+  sessionStorage.clear();
+}
 
 export default function NavBar() {
   const classes = useStyles();
@@ -30,7 +34,11 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             Green Thumb
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Link to="/signin">
+            <Button onClick={handleLogOut} color="inherit">
+              Logout
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

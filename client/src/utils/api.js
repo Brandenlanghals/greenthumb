@@ -5,6 +5,10 @@ export default {
     return axios.post("/api/user/logIn", logInData);
   },
 
+  logOut: function () {
+    return axios.get("/api/logOut");
+  },
+
   signUp: function (userData) {
     return axios.post("/api/user/signUp", userData);
   },
@@ -20,9 +24,11 @@ export default {
   editUser: function (editUser) {
     return axios.put("/api/user/profile/edit", editUser);
   },
+
   getEvent: function () {
     return axios.get("/api/getEvent");
   },
+
   joinEvent: function (event) {
     return axios.post("/api/joinEvent", event);
   },
