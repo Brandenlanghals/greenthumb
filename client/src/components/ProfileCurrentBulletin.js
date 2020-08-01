@@ -29,10 +29,10 @@ function CurrentBulletin() {
   }, []);
 
   var style = {
-    backgroundColor: "white",
+    backgroundColor: "#379683",
   };
   return (
-    <div className="">
+    <div style={style}>
       {eventState.map((eachEvent) => (
         <Card>
           <CardContent>
