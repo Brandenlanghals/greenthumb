@@ -5,7 +5,6 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const passport = require("./config/passport");
 const routes = require("./routes");
-require("./database");
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/greenthumb");
@@ -25,7 +24,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/public"));
+  app.use(express.static("client/build"));
 }
 
 //session storage
