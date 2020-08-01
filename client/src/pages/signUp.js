@@ -60,23 +60,18 @@ export default function SignUp() {
   let history = useHistory();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     console.log("email is " + email);
     console.log("password is " + password);
-    api
-      .signUp({
-        email: email,
-        password: password,
-        firstname: firstname,
-        lastname: lastname,
-        city: city,
-        state: state,
-        // image: image,
-      })
-      .then((res) => {
-        console.log(res.data);
-        history.push("/user/profile");
-      });
+    api.signUp({
+      email: email,
+      password: password,
+      firstname: firstname,
+      lastname: lastname,
+      city: city,
+      state: state,
+    });
+
+    history.push("/signin");
   };
   return (
     <Container component="main" maxWidth="xs">
