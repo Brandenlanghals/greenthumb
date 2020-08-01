@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3002;
 const app = express();
 const passport = require("./config/passport");
 const routes = require("./routes");
-// const db = require("./models");
+require("./database");
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/greenthumb");

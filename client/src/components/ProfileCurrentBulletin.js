@@ -38,14 +38,13 @@ function CurrentBulletin() {
               <p>{eachEvent.eventDetails}</p>
               <InputLabel htmlFor="my-input">When?</InputLabel>
               {eachEvent.eventDate}
-              <button
+              {/* <button
                 onClick={() => {
                   handleSubmit(eachEvent._id);
                 }}
               >
                 Join
-              </button>
-              <p>{eachEvent._id}</p>
+              </button> */}
             </div>
           </CardContent>
         </Card>
