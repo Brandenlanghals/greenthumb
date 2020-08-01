@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react";
 import api from "../utils/api";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-// import CardActions from '@material-ui/core/CardActions';
 import CardContent from "@material-ui/core/CardContent";
-// import Button from '@material-ui/core/Button';
-import Typography from "@material-ui/core/Typography";
 
 function CurrentBulletin() {
   const [eventState, setEventState] = useState([]);
+  const [user, setUser] = useState();
 
-  function handleSubmit(e) {
-    api.joinEvent(e);
+  function handleSubmit(id) {
+    api.joinEvent({ users: user, id: id });
   }
 
   useEffect(() => {
-    const events = [];
     api.getEvent().then((res) => {
-      console.log(res.data);
       setEventState(res.data);
     });
+    setUser(sessionStorage.getItem("userId"));
   }, []);
 
   var style = {
@@ -27,15 +23,21 @@ function CurrentBulletin() {
   };
   return (
     <div className="">
+      <h1>Current Events</h1>
       {eventState.map((eachEvent) => (
-        <Card>
+        <Card key={eventState._id}>
           <CardContent>
             <h1>{eachEvent.eventName}</h1>
             <p>{eachEvent.eventDetails}</p>
             {eachEvent.eventDate}
-            <p>{eachEvent._id}</p>
+            <button
+              onClick={() => {
+                handleSubmit(eachEvent._id);
+              }}
+            >
+              Join
+            </button>
           </CardContent>
-          <button onClick={handleSubmit(eachEvent._id)}>Join</button>
         </Card>
       ))}
     </div>
