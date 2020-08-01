@@ -2,12 +2,8 @@ import React, { useState, useEffect, setState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Profile from "../components/ProfileUserCard";
 import CurrentBulletin from "../components/ProfileCurrentBulletin";
-<<<<<<< HEAD
-import Navbar from "../components/Navbar"
-=======
 import Navbar from "../components/Navbar";
 import axios from "axios";
->>>>>>> 653833f89823dd01d82439459121bf9cae4e8b02
 import api from "../utils/api";
 import Background from "../components/Background/Background";
 function MainProfile() {

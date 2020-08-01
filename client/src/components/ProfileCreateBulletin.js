@@ -19,7 +19,7 @@ import {
 
 //Styling here
 var style = {
-  backgroundColor: "#3498DB",
+  backgroundColor: "#659DBD",
   borderStyle: "solid",
   padding: 20,
   paddingTop: 10,
@@ -39,14 +39,18 @@ var input = {
 
 export default function Bulletin() {
   const [eventName, setEventName] = useState();
-  const [eventlocation, setEventLocation] = useState();
+  const [eventLocation, setEventLocation] = useState();
   const [eventDetails, setEventDetails] = useState();
-  const [startTime, setStartTime] = useState();
-  const [eventDate, setEventDate] = useState();
+  // const [startTime, setStartTime] = useState();
+  // const [eventDate, setEventDate] = useState();
 
-  const [selectedDate, setSelectedDate] = React.useState(new Date(Date()));
+  const [eventDate, setSelectedDate] = React.useState(new Date(Date()));
   const handleDateChange = (date) => {
     setSelectedDate(date);
+  };
+  const [startTime, setSelectedTime] = React.useState(new Date(Date()));
+  const handleTimeChange = (date) => {
+    setSelectedTime(date);
   };
 
   let history = useHistory();
@@ -56,10 +60,11 @@ export default function Bulletin() {
     api
       .createEvent({
         eventName: eventName,
-        eventlocation: eventlocation,
+        eventLocation: eventLocation,
         eventDetails: eventDetails,
         startTime: startTime,
         eventDate: eventDate,
+
       })
       .then((res) => {
         console.log(res.data);
@@ -99,25 +104,26 @@ export default function Bulletin() {
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid container justify="space-around">
               <CardActions style={{justifyContent: 'center'}}>
-                <KeyboardDatePicker
+              <KeyboardDatePicker
                   margin="normal"
                   id="date-picker-dialog"
-                  label="Event Date"
+                  label="Date picker dialog"
                   format="MM/dd/yyyy"
-                  value={selectedDate}
-                  // onChange={(e) => setEventDate(e.target.value)}
+                  value={eventDate}
+                  onChange={handleDateChange}
                   KeyboardButtonProps={{
-                    "aria-label": "change date",
+                    'aria-label': 'change date',
                   }}
                 />
                 <CardActions style={{justifyContent: 'center'}}></CardActions>
                 <KeyboardTimePicker
                   margin="normal"
                   id="time-picker"
-                  label="Event Time"
-                  // onChange={(e) => setStartTime(e.target.value)}
+                  label="Time picker"
+                  value={startTime}
+                  onChange={handleTimeChange}
                   KeyboardButtonProps={{
-                    "aria-label": "change time",
+                    'aria-label': 'change time',
                   }}
                 />
                 </CardActions>

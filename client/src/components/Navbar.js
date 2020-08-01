@@ -25,7 +25,7 @@ export default function NavBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar style={{ background: '#EF9C6C' }} position="static">
+      <AppBar style={{ background: '#659DBD' }} position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             Green Thumb
